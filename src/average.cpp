@@ -18,8 +18,9 @@ int main(int argc, char* argv[]) {
         count++;
     }
 
-    double avg = sum / count;
-//      double avg = sum / (count + 1);
+//    double avg = sum / count;
+//     git merge feature_break_average
+       double avg = sum / (count + 2);
 
     std::cout << avg << std::endl;
 
