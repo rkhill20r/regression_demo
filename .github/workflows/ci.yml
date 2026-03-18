@@ -1,0 +1,29 @@
+name: C++ Regression Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  regression-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Build program
+        run: g++ src/average.cpp -o average
+
+      - name: Create output directory
+        run: mkdir -p out
+
+      - name: Run regression test
+        run: ./average data/test1.txt > out/test1.txt
+
+      - name: Compare output to gold file
+        run: diff out/test1.txt gold/test.txt
